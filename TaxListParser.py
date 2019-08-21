@@ -34,8 +34,7 @@ class TaxListParser:
     """convert a fixed-width string from MOD-IV to a dict"""
     def __init__(self,record,source=None):
         self.record = record
-        if not source == None: 
-            self.source = source
+        self.source = source
         self.numCheck = re.compile(r'[^\d.]+')
         """tags is a dict of tuples, with [0] as start, [1] as length, [2] as type ["string","int","date","float"], [3] as float format"""
         self.tags = {"muncode": (0,4,0),
@@ -191,9 +190,9 @@ class TaxListParser:
                         else:
                             return float(value)
                     except:
-                        print "record length:",len(self.record)
-                        print "value:",value
-                        print "break:",brk
+                        print("record length:",len(self.record))
+                        print("value:",value)
+                        print("break:",brk)
                         raise
             else:
                 return value.replace("\\", r"\\").replace("'","\\'")
@@ -216,7 +215,7 @@ class TaxListParser:
             else:
                 return "_".join([mun, block, lot, qual])
         except:
-            print self.record
+            print(self.record)
             raise
 
     def genCreateTableMySQL(self, tablename):

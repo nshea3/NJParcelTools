@@ -24,18 +24,18 @@ else:
     p = SR1AParser.SR1AParser2013
 
 if fn == "schema":
-    print p("").genCreateTablePG("SR1A", outputfields)
+    print(p("").genCreateTablePG("SR1A", outputfields))
 else:
     if not outputfields == None:
-        print ",".join(outputfields)
+        print(",".join(outputfields))
     else:
-        print ",".join(p("").fields)
+        print(",".join(p("").fields))
     if(os.path.exists(fn)):
         with open(fn, "r") as sr1a:
             line = sr1a.readline().rstrip("\n")
             while line:
                 parsed = p(line)
-                print parsed.genCSVrecord( outputfields ),
+                print(parsed.genCSVrecord( outputfields ),)
                 line = sr1a.readline()
     else:
         raise FileNotFound("Specified file does not exist.")

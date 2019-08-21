@@ -47,7 +47,7 @@ outputfields = ["pams_pin", "muncode", "block", "lot", "qual", "property_locatio
 
 fi = sys.argv[1]
 if fi == "schema":
-    print TaxListParser("").genCreateTablePG("table_name", outputfields)
+    print(TaxListParser("").genCreateTablePG("table_name", outputfields))
     sys.exit(0)
 
 fo = sys.argv[2]    
@@ -76,6 +76,6 @@ with open(fi, "r") as fh:
                 record = fh.readline()
                 rc = rc + 1
         except Exception as e:
-            print e
-            print traceback.format_exc()
-            print rc
+            print(e)
+            print(traceback.format_exc())
+            print(rc)

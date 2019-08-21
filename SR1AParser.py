@@ -162,9 +162,9 @@ class SR1AParser:
                         else:
                             return float(value)
                     except:
-                        print "record length:",len(self.record)
-                        print "value:",value
-                        print "break:",brk
+                        print("record length:",len(self.record))
+                        print("value:",value)
+                        print("break:",brk)
                         raise
             else:
                 return value.replace("\\", r"\\").replace("'","\\'")
@@ -186,7 +186,7 @@ class SR1AParser:
             else:
                 return "_".join([mun, block, lot, qual])
         except:
-            print self.record
+            print(self.record)
             raise
     def genCreateTableMySQL(self, tablename, fields=None):
         text = "CREATE TABLE `" + tablename + "` ( `recordid` INT NOT NULL UNSIGNED AUTO_INCREMENT, \n" + \
@@ -322,7 +322,7 @@ class SR1AParser:
         try:
             result = datetime.strptime(datestr, format)
             dateOk = (datestr == result.strftime(format)) # this makes sure the parsed date matches the original string
-        except Exception, e:
+        except:
             pass
 #            print str(e)
         if dateOk:
